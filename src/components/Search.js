@@ -14,16 +14,17 @@ const Search = props => {
 
   // When you click outside of the search results the results disappears
   window.addEventListener("mouseup", event => {
-    const search = document.getElementsByClassName("search");
+    const searchRes = document.getElementsByClassName("search");
     const input = document.getElementById("search-id");
-    const searchElement = search[Object.keys(search)[0]];
+    const searchResElement = searchRes[Object.keys(searchRes)[0]];
     if (
-      event.target.parentNode.parentNode !== searchElement &&
+      (event.target.parentNode.parentNode === searchResElement &&
+        event.target.parentNode.parentNode !== searchResElement) ||
       event.target !== input
     ) {
-      searchElement.style.display = "none";
-    } else if (event.target === input && searchElement) {
-      searchElement.style.display = "block";
+      searchResElement.style.display = "none";
+    } else if (event.target === input && searchResElement) {
+      searchResElement.style.display = "block";
     }
   });
 
