@@ -12,10 +12,26 @@ const Search = props => {
     props.searchTodo(value);
   };
 
+  // When you click outside of the search results the results disappears
+  window.addEventListener("mouseup", event => {
+    const search = document.getElementsByClassName("search");
+    const input = document.getElementById("search-id");
+    const searchElement = search[Object.keys(search)[0]];
+    if (
+      event.target.parentNode.parentNode !== searchElement &&
+      event.target !== input
+    ) {
+      searchElement.style.display = "none";
+    } else if (event.target === input && searchElement) {
+      searchElement.style.display = "block";
+    }
+  });
+
   const { searchResults } = props;
   return (
     <SearchStyle>
       <input
+        id="search-id"
         type="text"
         placeholder="Search a todo"
         onChange={e => {
@@ -23,7 +39,7 @@ const Search = props => {
           handleChange(e);
         }}
       />
-      <SearchResultsStyle>
+      <SearchResultsStyle className="search">
         {searchResults &&
           searchResults.map(result => (
             <SearchItem key={result.id} {...result} />
