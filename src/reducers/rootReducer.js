@@ -7,7 +7,8 @@ import {
   SEARCH_TODO,
   EDIT_TODO,
   REMOVE_TODO,
-  TOGGLE_TODO
+  TOGGLE_TODO,
+  ALL_DONE
 } from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
@@ -91,6 +92,19 @@ export const rootReducer = (state = initialState, action) => {
       const foundIndex = todos.findIndex(todo => todo.id === action.id);
       // Update it.
       todos[foundIndex].completed = action.isCompleted;
+      return {
+        ...state,
+        data: todos,
+        todos
+      };
+    }
+
+    case ALL_DONE: {
+      // Set all todo's compeleted property to true.
+      const todos = state.data.map(todo => ({
+        ...todo,
+        completed: true
+      }));
       return {
         ...state,
         data: todos,

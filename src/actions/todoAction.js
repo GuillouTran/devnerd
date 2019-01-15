@@ -6,7 +6,8 @@ import {
   SEARCH_TODO,
   EDIT_TODO,
   REMOVE_TODO,
-  TOGGLE_TODO
+  TOGGLE_TODO,
+  ALL_DONE
 } from "./types";
 
 // Get all todos action.
@@ -69,5 +70,12 @@ export const toggleTodoAction = (id, isCompleted) => {
     type: TOGGLE_TODO,
     id,
     isCompleted
+  };
+};
+
+// Switch all to done.
+export const allDoneAction = () => {
+  return {
+    type: ALL_DONE
   };
 };

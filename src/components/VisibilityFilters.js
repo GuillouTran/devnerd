@@ -1,98 +1,65 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { getAllTodosAction } from "../actions/todoAction";
 import { getActiveTodosAction } from "../actions/todoAction";
 import { getDoneTodosAction } from "../actions/todoAction";
 
-class VisibilityFilters extends Component {
-  state = {
-    all: null,
-    active: null,
-    done: null
-  };
-
-  // To check if our props is changed or no "Add todo or make it complated...".
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.todos) !== JSON.stringify(nextProps.todo)) {
-      // So something changed so we have to update our state.
-      this.getTodosFiltersCount();
-    }
-  }
-
-  componentDidMount = () => {
-    this.getTodosFiltersCount();
-  };
-
-  getTodosFiltersCount = () => {
-    // Get todos out of the props using destructuring.
-    const { todos } = this.props;
-
-    // count all todos.
-    const all = todos.length;
-
-    // count active todos.
-    const active = todos.filter(todo => !todo.completed).length;
-
-    // count done todos.
-    const done = todos.filter(todo => todo.completed).length;
-
-    this.setState({ all, active, done });
-  };
+const VisibilityFilters = props => {
   // Get all todos.
-  getAllTodos = () => {
-    this.props.allTodos();
+  const getAllTodos = () => {
+    props.allTodos();
   };
 
   // Get active todos "uncompleted ones".
-  getActiveTodos = () => {
-    this.props.activeTodos();
+  const getActiveTodos = () => {
+    props.activeTodos();
   };
 
   // Get done todos "completed ones".
-  getDoneTodos = () => {
-    this.props.doneTodos();
+  const getDoneTodos = () => {
+    props.doneTodos();
   };
 
-  render() {
-    const { all, active, done } = this.state;
-    return (
-      <div>
-        <div className="todo-filter">
-          <input
-            id="all"
-            type="radio"
-            name="filters"
-            checked="checked"
-            onChange={this.getAllTodos}
-          />
-          <label htmlFor="all">All</label>
-          <span>{all}</span>
-        </div>
-        <div className="todo-filter">
-          <input
-            id="active"
-            type="radio"
-            name="filters"
-            onChange={this.getActiveTodos}
-          />
-          <label htmlFor="active">Active</label>
-          <span>{active}</span>
-        </div>
-        <div className="todo-filter">
-          <input
-            id="done"
-            type="radio"
-            name="filters"
-            onChange={this.getDoneTodos}
-          />
-          <label htmlFor="done">Done</label>
-          <span>{done}</span>
-        </div>
+  const count = () => {
+    const { todos } = props;
+    return {
+      all: todos.length,
+      active: todos.filter(todo => !todo.completed).length,
+      done: todos.filter(todo => todo.completed).length
+    };
+  };
+  return (
+    <div>
+      <div className="todo-filter">
+        <input
+          id="all"
+          type="radio"
+          name="filters"
+          checked="checked"
+          onChange={getAllTodos}
+        />
+        <label htmlFor="all">All</label>
+        <span>{count().all}</span>
       </div>
-    );
-  }
-}
+      <div className="todo-filter">
+        <input
+          id="active"
+          type="radio"
+          name="filters"
+          onChange={getActiveTodos}
+        />
+        <label htmlFor="active">Active</label>
+        <span>{count().active}</span>
+      </div>
+      <div className="todo-filter">
+        <input id="done" type="radio" name="filters" onChange={getDoneTodos} />
+        <label htmlFor="done">Done</label>
+        <span>{count().done}</span>
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = ({ data }) => {
   return {
