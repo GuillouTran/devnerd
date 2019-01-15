@@ -1,5 +1,10 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -15,6 +20,7 @@ const App = () => {
           <Route path="/" exact component={Home} />
           <Route path="/todo/:id/edit" component={EditTodo} />
           <Route path="/todo/:id" component={Todo} />
+          <Redirect to="/" />
         </Switch>
       </Fragment>
     </Router>

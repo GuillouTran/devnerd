@@ -5,7 +5,8 @@ import {
   SHOW_DONE,
   ADD_NEW_TODO,
   SEARCH_TODO,
-  EDIT_TODO
+  EDIT_TODO,
+  REMOVE_TODO
 } from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
@@ -70,6 +71,16 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         data: todos,
         todos
+      };
+    }
+
+    case REMOVE_TODO: {
+      // Get all todos except the one we removed.
+      const newTodos = state.data.filter(todo => todo.id !== action.id);
+      return {
+        ...state,
+        data: newTodos,
+        todos: newTodos
       };
     }
 

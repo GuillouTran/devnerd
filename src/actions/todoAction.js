@@ -4,7 +4,8 @@ import {
   SHOW_DONE,
   ADD_NEW_TODO,
   SEARCH_TODO,
-  EDIT_TODO
+  EDIT_TODO,
+  REMOVE_TODO
 } from "./types";
 
 // Get all todos action.
@@ -36,7 +37,7 @@ export const addNewTodoAction = title => {
   };
 };
 
-// Search for todos.
+// Search for todos action.
 export const searchTodosAction = value => {
   return {
     type: SEARCH_TODO,
@@ -44,11 +45,19 @@ export const searchTodosAction = value => {
   };
 };
 
-// Edit a specific todo.
+// Edit a specific todo action.
 export const editTodoAction = (title, id) => {
   return {
     type: EDIT_TODO,
     title,
+    id
+  };
+};
+
+// Remove a specific todo action.
+export const removeTodoAction = id => {
+  return {
+    type: REMOVE_TODO,
     id
   };
 };
