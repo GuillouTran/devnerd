@@ -12,7 +12,7 @@ const Home = () => (
     <TodoSvg />
     <h1>Hey, This is your to-do list.</h1>
     <AddTodo />
-    <div style={{ display: "flex", margin: "7px 0" }}>
+    <div className="filters-row">
       <VisibilityFilters />
       <MakeAllDoneBtn />
     </div>

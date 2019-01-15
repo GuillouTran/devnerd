@@ -9,6 +9,9 @@ export const NavbarStyle = styled.nav`
   padding: 2rem;
   .app-logo {
     font-size: 2rem;
+    @media (max-width: 30em) {
+      margin-right: 1rem;
+    }
   }
 `;
 
@@ -55,6 +58,13 @@ export const HomeStyle = styled.div`
   max-width: 100%;
   margin: 0 auto;
   padding: 3rem 0;
+  .filters-row {
+    display: flex;
+    margin: 7px 0;
+    @media (max-width: 30em) {
+      flex-direction: column;
+    }
+  }
   svg {
     /* our svg on the home page*/
     width: 8rem;
@@ -88,6 +98,9 @@ export const VisibilityFiltersStyle = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
+  @media (max-width: 30em) {
+    padding-bottom: 1rem;
+  }
   .todo-filter {
     display: flex;
     align-items: center;

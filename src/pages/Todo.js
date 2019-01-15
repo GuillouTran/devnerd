@@ -11,7 +11,7 @@ const Todo = ({ todo, location }) => {
     <TodoPageStyle>
       <TodoItem {...todo} />
       <Link to={`${location.pathname}/edit`}>
-        <button className="edit-button">
+        <button className="button">
           <span>Edit</span>
           <Edit />
         </button>
