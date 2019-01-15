@@ -6,7 +6,8 @@ import {
   ADD_NEW_TODO,
   SEARCH_TODO,
   EDIT_TODO,
-  REMOVE_TODO
+  REMOVE_TODO,
+  TOGGLE_TODO
 } from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
@@ -81,6 +82,19 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         data: newTodos,
         todos: newTodos
+      };
+    }
+    case TOGGLE_TODO: {
+      // Make a copy of our todos.
+      const todos = [...state.data];
+      // Find the index of the todo that the user toggled.
+      const foundIndex = todos.findIndex(todo => todo.id === action.id);
+      // Update it.
+      todos[foundIndex].completed = action.isCompleted;
+      return {
+        ...state,
+        data: todos,
+        todos
       };
     }
 
