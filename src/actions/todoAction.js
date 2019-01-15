@@ -1,4 +1,10 @@
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_DONE, ADD_NEW_TODO } from "./types";
+import {
+  SHOW_ALL,
+  SHOW_ACTIVE,
+  SHOW_DONE,
+  ADD_NEW_TODO,
+  SEARCH_TODO
+} from "./types";
 
 // Get all todos action.
 export const getAllTodosAction = () => {
@@ -26,5 +32,13 @@ export const addNewTodoAction = title => {
   return {
     type: ADD_NEW_TODO,
     title
+  };
+};
+
+// Search for todos.
+export const searchTodosAction = value => {
+  return {
+    type: SEARCH_TODO,
+    value
   };
 };

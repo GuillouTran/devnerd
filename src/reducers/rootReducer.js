@@ -3,7 +3,8 @@ import {
   SHOW_ALL,
   SHOW_ACTIVE,
   SHOW_DONE,
-  ADD_NEW_TODO
+  ADD_NEW_TODO,
+  SEARCH_TODO
 } from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
@@ -44,6 +45,17 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         data: todos,
         todos
+      };
+    }
+
+    case SEARCH_TODO: {
+      // check todos if they contain the value of what the user has written.
+      const todos = state.data.filter(todo =>
+        todo.title.includes(action.value)
+      );
+      return {
+        ...state,
+        searchResults: todos
       };
     }
 
