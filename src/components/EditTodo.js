@@ -25,10 +25,12 @@ class EditTodo extends Component {
 
   handleSave = () => {
     const { title, id } = this.state;
-    this.props.editTodo(title, id);
+    if (title.trim().length > 0) {
+      this.props.editTodo(title, id);
 
-    // navigate to the home page after the user save.
-    this.props.history.push("/");
+      // navigate to the home page after the user save.
+      this.props.history.push("/");
+    }
   };
 
   render() {

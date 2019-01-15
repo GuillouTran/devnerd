@@ -25,11 +25,7 @@ const TodoItem = props => {
   const { title, id, completed } = props;
   return (
     <TodoItemStyle completed={completed}>
-      <input
-        type="checkbox"
-        onChange={toggleTodo}
-        checked={completed || false}
-      />
+      <input type="checkbox" onChange={toggleTodo} checked={completed} />
       <Link to={`/todo/${id}`}>
         <p className="todo-title">{title}</p>
       </Link>

@@ -16,7 +16,9 @@ class AddTodo extends Component {
 
   handleClick = () => {
     const { title } = this.state;
-    this.props.addNewTodo(title);
+    if (title.trim().length > 0) {
+      this.props.addNewTodo(title);
+    }
   };
 
   render() {
