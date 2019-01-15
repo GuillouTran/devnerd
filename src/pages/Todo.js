@@ -2,14 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
-import TodoItem from "../components/TodoItem";
 import { TodoPageStyle } from "../styles";
 import { Edit } from "styled-icons/material/Edit";
 
 const Todo = ({ todo, location }) => {
   return (
     <TodoPageStyle>
-      <TodoItem {...todo} />
+      <div className="todo-title">
+        <p>{todo.title}</p>
+      </div>
       <Link to={`${location.pathname}/edit`}>
         <button className="button">
           <span>Edit</span>

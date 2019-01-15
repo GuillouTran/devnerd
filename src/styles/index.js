@@ -190,8 +190,22 @@ export const TodoPageStyle = styled.div`
   max-width: 100%;
   margin: 0 auto;
   padding: 10rem 0;
-  > li {
-    margin: 0 !important;
+  @media (max-width: 25em) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .todo-title {
+    font-size: 1.4rem;
+    width: 100%;
+    color: #424242;
+    background: #fdc5bb;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    align-items: center;
+    box-shadow: 0px 0px 37px -8px rgb(133, 105, 138);
   }
   a {
     display: contents;
@@ -207,6 +221,10 @@ export const TodoPageStyle = styled.div`
     color: white;
     font-size: 1.3rem;
     margin-left: 10px;
+    @media (max-width: 25em) {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
     > span {
       margin-right: 10px;
     }
