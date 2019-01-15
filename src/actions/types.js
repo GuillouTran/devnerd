@@ -5,3 +5,5 @@ export const SHOW_DONE = "SHOW_DONE";
 export const ADD_NEW_TODO = "ADD_NEW_TODO";
 
 export const SEARCH_TODO = "SEARCH_TODO";
+
+export const EDIT_TODO = "EDIT_TODO";

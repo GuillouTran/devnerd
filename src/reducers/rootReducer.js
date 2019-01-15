@@ -4,7 +4,8 @@ import {
   SHOW_ACTIVE,
   SHOW_DONE,
   ADD_NEW_TODO,
-  SEARCH_TODO
+  SEARCH_TODO,
+  EDIT_TODO
 } from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
@@ -33,6 +34,7 @@ export const rootReducer = (state = initialState, action) => {
       };
     }
 
+    // Add new todo to the store.
     case ADD_NEW_TODO: {
       const newTodo = {
         userId: 1,
@@ -56,6 +58,18 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         searchResults: todos
+      };
+    }
+
+    // Edit a specific todo in the store.
+    case EDIT_TODO: {
+      const todos = [...state.todos];
+      const foundIndex = todos.findIndex(todo => todo.id === action.id);
+      todos[foundIndex].title = action.title;
+      return {
+        ...state,
+        data: todos,
+        todos
       };
     }
 

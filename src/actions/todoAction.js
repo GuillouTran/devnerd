@@ -3,7 +3,8 @@ import {
   SHOW_ACTIVE,
   SHOW_DONE,
   ADD_NEW_TODO,
-  SEARCH_TODO
+  SEARCH_TODO,
+  EDIT_TODO
 } from "./types";
 
 // Get all todos action.
@@ -40,5 +41,14 @@ export const searchTodosAction = value => {
   return {
     type: SEARCH_TODO,
     value
+  };
+};
+
+// Edit a specific todo.
+export const editTodoAction = (title, id) => {
+  return {
+    type: EDIT_TODO,
+    title,
+    id
   };
 };
