@@ -1,5 +1,10 @@
 import { initialState } from "../initialState";
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_DONE } from "../actions/types";
+import {
+  SHOW_ALL,
+  SHOW_ACTIVE,
+  SHOW_DONE,
+  ADD_NEW_TODO
+} from "../actions/types";
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,6 +31,22 @@ export const rootReducer = (state = initialState, action) => {
         todos: doneTodos
       };
     }
+
+    case ADD_NEW_TODO: {
+      const newTodo = {
+        userId: 1,
+        id: state.data.length + 1,
+        title: action.title,
+        completed: false
+      };
+      const todos = [...state.data, newTodo];
+      return {
+        ...state,
+        data: todos,
+        todos
+      };
+    }
+
     default:
       return {
         ...state,

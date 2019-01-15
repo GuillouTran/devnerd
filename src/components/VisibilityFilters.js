@@ -12,7 +12,19 @@ class VisibilityFilters extends Component {
     done: null
   };
 
+  // To check if our props is changed or no "Add todo or make it complated...".
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(this.props.todos) !== JSON.stringify(nextProps.todo)) {
+      // So something changed so we have to update our state.
+      this.getTodosFiltersCount();
+    }
+  }
+
   componentDidMount = () => {
+    this.getTodosFiltersCount();
+  };
+
+  getTodosFiltersCount = () => {
     // Get todos out of the props using destructuring.
     const { todos } = this.props;
 
@@ -82,9 +94,9 @@ class VisibilityFilters extends Component {
   }
 }
 
-const mapStateToProps = ({ todos }) => {
+const mapStateToProps = ({ data }) => {
   return {
-    todos
+    todos: data
   };
 };
 
