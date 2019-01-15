@@ -1,13 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { allDoneAction } from "../actions/todoAction";
+import { MakeAllDoneBtnStyle } from "../styles";
+import { Done } from "styled-icons/material/Done";
 
 const MakeAllDoneBtn = props => {
   const makeAllDone = () => {
     props.complateAll();
   };
 
-  return <button onClick={makeAllDone}>Mark all as complate</button>;
+  return (
+    <MakeAllDoneBtnStyle onClick={makeAllDone}>
+      <span>Mark all as complate</span> <Done />
+    </MakeAllDoneBtnStyle>
+  );
 };
 
 const mapDispatchToProps = dispatch => {

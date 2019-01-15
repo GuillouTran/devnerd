@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { editTodoAction } from "../actions/todoAction";
+import { TodoPageStyle } from "../styles";
+import { EditTodoStyle } from "../styles";
 
 class EditTodo extends Component {
   state = {
@@ -32,15 +34,18 @@ class EditTodo extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={this.handleChange}
-        />
+      <TodoPageStyle>
+        <EditTodoStyle>
+          <input
+            className="edit-input"
+            type="text"
+            name="title"
+            value={title}
+            onChange={this.handleChange}
+          />
+        </EditTodoStyle>
         <button onClick={this.handleSave}>Save</button>
-      </div>
+      </TodoPageStyle>
     );
   }
 }

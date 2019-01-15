@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { addNewTodoAction } from "../actions/todoAction";
+import { AddTodoStyle } from "../styles";
 
 class AddTodo extends Component {
   state = {
@@ -21,15 +22,18 @@ class AddTodo extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div>
+      <AddTodoStyle>
         <input
+          className="new-todo-input"
           type="text"
           name="title"
           value={title}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>Add</button>
-      </div>
+        <button onClick={this.handleClick} className="add-todo-btn">
+          Add
+        </button>
+      </AddTodoStyle>
     );
   }
 }

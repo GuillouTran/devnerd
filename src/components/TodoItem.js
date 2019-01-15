@@ -4,6 +4,8 @@ import { Link, withRouter } from "react-router-dom";
 
 import { removeTodoAction } from "../actions/todoAction";
 import { toggleTodoAction } from "../actions/todoAction";
+import { TodoItemStyle } from "../styles";
+import { Close } from "styled-icons/material/Close";
 
 const TodoItem = props => {
   const removeTodo = () => {
@@ -22,24 +24,17 @@ const TodoItem = props => {
 
   const { title, id, completed } = props;
   return (
-    <div style={{ display: "flex" }}>
+    <TodoItemStyle completed={completed}>
       <input
         type="checkbox"
         onChange={toggleTodo}
         checked={completed || false}
       />
       <Link to={`/todo/${id}`}>
-        <p
-          className="todo-title"
-          style={{
-            textDecoration: completed ? "line-through" : "none"
-          }}
-        >
-          {title}
-        </p>
+        <p className="todo-title">{title}</p>
       </Link>
-      <div onClick={removeTodo}>X</div>
-    </div>
+      <Close onClick={removeTodo} />
+    </TodoItemStyle>
   );
 };
 

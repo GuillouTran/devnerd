@@ -1,23 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import TodoItem from "../components/TodoItem";
 import { Link, withRouter } from "react-router-dom";
+
+import TodoItem from "../components/TodoItem";
+import { TodoPageStyle } from "../styles";
+import { Edit } from "styled-icons/material/Edit";
 
 const Todo = ({ todo, location }) => {
   return (
-    <div>
+    <TodoPageStyle>
       <TodoItem {...todo} />
       <Link to={`${location.pathname}/edit`}>
-        <button className="edit-button">Edit</button>
+        <button className="edit-button">
+          <span>Edit</span>
+          <Edit />
+        </button>
       </Link>
-    </div>
+    </TodoPageStyle>
   );
 };
 
 const mapStateToProps = (state, ownProps) => {
-  let { id } = ownProps.match.params;
+  const id = parseInt(ownProps.match.params.id);
   return {
-    todo: state.todos.find(todo => (todo.id = id))
+    todo: state.data.find(todo => todo.id === id)
   };
 };
 

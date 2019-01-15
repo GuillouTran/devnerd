@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { searchTodosAction } from "../actions/todoAction";
 import SearchItem from "./SearchItem";
+import { SearchStyle } from "../styles";
+import { SearchResultsStyle } from "../styles";
 
 const Search = props => {
   const handleChange = e => {
@@ -12,7 +14,7 @@ const Search = props => {
 
   const { searchResults } = props;
   return (
-    <div>
+    <SearchStyle>
       <input
         type="text"
         placeholder="Search a todo"
@@ -21,11 +23,13 @@ const Search = props => {
           handleChange(e);
         }}
       />
-      {searchResults &&
-        searchResults.map(result => <SearchItem key={result.id} {...result} />)}
-
-      <SearchItem />
-    </div>
+      <SearchResultsStyle>
+        {searchResults &&
+          searchResults.map(result => (
+            <SearchItem key={result.id} {...result} />
+          ))}
+      </SearchResultsStyle>
+    </SearchStyle>
   );
 };
 

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getAllTodosAction } from "../actions/todoAction";
 import { getActiveTodosAction } from "../actions/todoAction";
 import { getDoneTodosAction } from "../actions/todoAction";
+import { VisibilityFiltersStyle } from "../styles";
 
 const VisibilityFilters = props => {
   // Get all todos.
@@ -21,6 +22,7 @@ const VisibilityFilters = props => {
     props.doneTodos();
   };
 
+  // This function return an object with the count of all, active, done todos.
   const count = () => {
     const { todos } = props;
     return {
@@ -30,9 +32,10 @@ const VisibilityFilters = props => {
     };
   };
   return (
-    <div>
+    <VisibilityFiltersStyle>
       <div className="todo-filter">
         <input
+          className="radio-btn"
           id="all"
           type="radio"
           name="filters"
@@ -44,6 +47,7 @@ const VisibilityFilters = props => {
       </div>
       <div className="todo-filter">
         <input
+          className="radio-btn"
           id="active"
           type="radio"
           name="filters"
@@ -53,11 +57,17 @@ const VisibilityFilters = props => {
         <span>{count().active}</span>
       </div>
       <div className="todo-filter">
-        <input id="done" type="radio" name="filters" onChange={getDoneTodos} />
+        <input
+          className="radio-btn"
+          id="done"
+          type="radio"
+          name="filters"
+          onChange={getDoneTodos}
+        />
         <label htmlFor="done">Done</label>
         <span>{count().done}</span>
       </div>
-    </div>
+    </VisibilityFiltersStyle>
   );
 };
 
