@@ -1,14 +1,21 @@
 import React, { Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Todo from "./pages/Todo";
 
 const App = () => {
   return (
-    <Fragment>
-      <Navbar />
-      <Home />
-    </Fragment>
+    <Router>
+      <Fragment>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/todo/:id" component={Todo} />
+        </Switch>
+      </Fragment>
+    </Router>
   );
 };
 
