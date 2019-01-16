@@ -23,7 +23,6 @@ const TodoItem = props => {
   };
 
   const { title, id, completed } = props;
-  console.log(completed);
 
   return (
     <TodoItemStyle completed={completed}>

@@ -7,7 +7,7 @@ import { Edit } from "styled-icons/material/Edit";
 
 const Todo = ({ todo, location }) => {
   return (
-    <TodoPageStyle>
+    <TodoPageStyle completed={todo.completed}>
       <div className="todo-title">
         <p>{todo.title}</p>
       </div>

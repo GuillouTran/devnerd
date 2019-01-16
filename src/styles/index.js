@@ -19,9 +19,9 @@ export const NavbarStyle = styled.nav`
 export const SearchStyle = styled.div`
   position: relative;
   > input {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border-radius: 4px;
-    padding: 6px 7px;
+    padding: 7px;
     border: none;
     width: 22rem;
     &:focus {
@@ -206,6 +206,8 @@ export const TodoPageStyle = styled.div`
     padding: 1rem 0.5rem;
     align-items: center;
     box-shadow: 0px 0px 37px -8px rgb(133, 105, 138);
+    text-decoration: ${props =>
+      props.completed === true ? "line-through" : "none"};
   }
   a {
     display: contents;
