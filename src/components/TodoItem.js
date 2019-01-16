@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 import { removeTodoAction } from "../actions/todoAction";
 import { toggleTodoAction } from "../actions/todoAction";
@@ -33,6 +34,12 @@ const TodoItem = props => {
       <Close onClick={removeTodo} />
     </TodoItemStyle>
   );
+};
+
+TodoItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
